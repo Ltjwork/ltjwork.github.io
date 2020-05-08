@@ -22,16 +22,16 @@ function draw() {
   
   
   rotateX(0);
-  rotateY(10);
-  fill(0);
+  rotateY(-10);
+  noFill();
   stroke(255);
   
   offset += -0.02*(touchOffset*4);
   
-  for(let i=0;i<30;i++){
+  for(let i=0;i<40;i++){
     beginShape();
     for(let j=0;j<100;j++){
-      let p= createVector(-100+j*2,-80+i*5);
+      let p= createVector(-230+j*5,-150+i*8);
       let n= noise(i*10,j*0.1+offset) + 0.5*noise(i*20,j*0.3+offset)+0.25*noise(i*40,j*0.3+offset);
       let f = pow((1-cos(j/100*TWO_PI))/2,2.5);
       p.y+=f*n*(-50) + n*(-4);
@@ -41,8 +41,8 @@ function draw() {
   }
   // blendMode(LIGHTEST);
   let time = millis();
-  let rot = 1.5755+touchOffset*2-10;
-  if(rot > -10 && !gameover){
+  let rot = 1.5755+touchOffset*2+10;
+  if(rot > 10 && !gameover){
     
     rotateX(0);
     rotateY(rot);
@@ -51,14 +51,14 @@ function draw() {
   }
   else{
     rotateX(0);
-    rotateY(-10);
+    rotateY(10);
   }
   
   fill("#d5ff00");
     noStroke();
-    let winText = text("HI",0,100,10);
+    let winText = text("HI",0,200,10);
   // console.log(rot);
-  if(rot <= -10 && !gameover){
+  if(rot <= 10 && !gameover){
     // console.log(1.5+touchOffset*2);
 
     mySound.play();
